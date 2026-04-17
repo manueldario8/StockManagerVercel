@@ -1,0 +1,18 @@
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #adbbda;
+}
+
+.dashboard h3 {
+    font-size: 50px;
+    margin: 4rem 0 0 4rem;
+}
+
+.cards-container {
+    display: flex;
+    gap: 3rem;
+    margin: 4rem 0 0 8rem;
+
+}

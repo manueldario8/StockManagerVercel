@@ -1,0 +1,33 @@
+.card-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 150px;
+    gap: 0.1rem;
+    border-radius: 25px; 
+    box-shadow: 0 0 3px rgb(31, 31, 31);
+    text-decoration: none;
+}
+
+.card-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #e5e5e5;
+}
+
+.card-record {
+    margin-top: 5px;
+    font-size: 26px;
+    font-weight: 600;
+    color: #e5e5e5;
+}
+
+
+
+.id-1, .id-2, .id-3, .id-4 {  
+    border: 1px solid #3d52a0;
+    background-color:  #7091e6;
+    box-shadow: 0 4px 5px #8470a3;
+}

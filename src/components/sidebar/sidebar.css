@@ -1,0 +1,50 @@
+.main-sd-container {
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 18rem;
+    flex-shrink: 0;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+    background-color: rgb(34, 34, 34);
+    z-index: 100;
+}
+
+.app-name {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    
+    height: 10rem;
+}
+
+.app-name h1{
+    color: rgb(232, 233, 234);
+    font-size: 26px;
+    cursor: default;
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    gap: 4rem;
+    align-items:first baseline;
+    padding-left: 2rem;
+    height: 100%;
+   
+}
+
+.actions-container a {
+    text-decoration: none;
+    color: rgb(213, 219, 223);
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.actions-container a i {
+    margin-right: 8px;
+    font-size: 23px;
+}

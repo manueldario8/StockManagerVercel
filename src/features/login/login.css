@@ -1,0 +1,127 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.sub-main {
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,.3);
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    width: 400px;
+    padding-bottom: 1rem;
+}
+.sub-main img{
+    margin-top: 1rem;
+    width: 140px;
+    height: 110px;
+}
+
+.sub-main .my-form-floating {
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+    margin-top: 0.2rem;
+    align-items: center;
+}
+
+.sub-main .my-form-floating label {
+    margin-top: 10px;
+}
+
+.my-form-floating input {
+    margin-top: 5px;
+    border: 1px gray solid;
+    box-shadow: 0 0 15px rgba(72, 87, 223, 0.4);
+    width: 290px;
+    height: 36px;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.my-form-floating input:hover {
+    border: 1px gray solid;
+    box-shadow: 0 0 15px rgba(26, 38, 255, 0.6);
+}
+
+.my-form-floating input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(26, 38, 255, 0.6);
+}
+
+.sub-main .submit-button {
+    margin-top: 1rem;
+    border: none; 
+    background-color: #e4d831;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sub-main .submit-button:hover {
+    background-color: #e9da04;
+}
+
+.edit-btn {
+    color: rgb(59, 62, 251);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.adviser {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 15px; 
+}
+
+a {
+    color: rgb(59, 62, 251);
+}
+a:visited {
+    color: rgb(59, 62, 251);
+}
+
+.copyright {
+    margin-top: 15px;
+}
+
+/*StartLogin*/
+.inner-sec-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5px 5px 5px;
+}
+
+.form-dt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.info-inputs .form-dt label{
+    margin-bottom: -2px;
+    font-weight: 400;
+}
+
+.ad-icon i{
+    color: rgb(72, 72, 255);
+
+}
+
+.ad-icon label{
+    margin-top: 15px;
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+

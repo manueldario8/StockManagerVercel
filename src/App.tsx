@@ -1,0 +1,22 @@
+import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { DashboardLayout, Dashboard, ProviderPage, ProductPage, CategoryPage, Login } from './exports';
+
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path='/' element={<DashboardLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="providers" element={<ProviderPage />} />
+          <Route path="categories" element={<CategoryPage />} />
+          <Route path="products" element={<ProductPage />} />
+        </Route>
+        <Route path='login' element={<Login/>}></Route>
+      </Routes>
+    </Router>
+  )
+}
+
+export default App
