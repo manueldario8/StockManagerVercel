@@ -1,20 +1,18 @@
-body {
-  min-height: 100vh;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-}
-
 .sub-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     display: flex;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,.3);
     flex-direction: column;
     align-items: center;
-    margin-top: 60px;
+
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,.3);
     width: 400px;
     padding-bottom: 1rem;
+    min-height: 500px;
 }
 .sub-main img{
     margin-top: 1rem;
@@ -80,6 +78,7 @@ body {
 .adviser {
     display: flex;
     flex-direction: column;
+    text-align: center;
     margin: 10px 15px; 
 }
 

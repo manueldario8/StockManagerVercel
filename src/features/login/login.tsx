@@ -1,5 +1,5 @@
 import "./login.css";
-//import Logo from "../../assets/logoapp.jpg";
+import { Logo } from "../../exports";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -74,7 +74,7 @@ const Login = () => {
 
     return (
         <div className="sub-main">
-            <a href="/" className="icon-container"><img src="{Logo}" alt="logo" /></a>
+            <a href="/" className="icon-container"><img src={Logo} alt="logo" /></a>
             {error && <p className="error-text">{error}</p>}
             {step === 1 && (
                 <>
@@ -103,7 +103,7 @@ const Login = () => {
                             </p>
                         </section>
 
-                        <Link to="/nuevousuario" className="link">
+                        <Link to="/signup" className="link">
                             Registrarme
                         </Link>
                     </form>

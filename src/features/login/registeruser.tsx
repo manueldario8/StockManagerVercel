@@ -1,12 +1,12 @@
 import './login.css';
-//import Logo from "../../assets/logoapp.jpg";
+import { Logo } from '../../exports';
 
 
-const RegisterUser = () => {
+const SignUp = () => {
     return (
         <>
             <div className="sub-main">
-                <a href="/"><img src="{Logo}" alt="Logo" /></a>
+                <a href="/"><img src={Logo} alt="Logo" /></a>
                 <h3>Crear una cuenta</h3>
                 <form action="" className='my-form-floating'>
                     <section className='inner-sec-form'>
@@ -45,4 +45,4 @@ const RegisterUser = () => {
     )
 }
 
-export default RegisterUser;
+export default SignUp;

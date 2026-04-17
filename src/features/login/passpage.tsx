@@ -1,5 +1,5 @@
-import "./Login.css";
-import Logo from "../../assets/logoapp.jpg";
+import "./login.css";
+import { Logo } from "../../exports";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const PassPage = () => {
