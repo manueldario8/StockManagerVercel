@@ -10,7 +10,7 @@ const PassPage = () => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
-        const form = e.currentTarget;
+        //const form = e.currentTarget;
         //const password = (form.elements.namedItem("password") as HTMLFormElement);
 
         navigate("/");
