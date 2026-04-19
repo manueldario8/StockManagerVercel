@@ -17,7 +17,7 @@ const categories: Category[] = Array.from({ length: 10 }, (_, i) => ({
 const CategoryPage = () => {
   return (
     <>
-      <h3>Categorías</h3>
+      <h3 className='title-dash'>Categorías</h3>
       <Table data={categories} columns={categoryColumns} />
     </>
   );

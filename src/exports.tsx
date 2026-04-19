@@ -14,7 +14,10 @@ export { default as Table } from './UI/tables/table';
 
 /*Features exports*/
 export { default as ProviderPage } from './features/providers/providerPage';
+export { default as ProviderDetail } from './features/providers/providerDetail';
+export { default as ProviderForm } from './features/providers/providerForm';
 export { default as ProductPage } from './features/products/productPage';
 export { default as CategoryPage } from './features/categories/categoryPage';
+export { default as OrderPage } from './features/orders/orderPage';
 export { default as Login } from './features/login/login';
 export { default as SignUp } from './features/login/registeruser';

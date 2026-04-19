@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { DashboardLayout, Dashboard, ProviderPage, ProductPage, CategoryPage, Login, SignUp } from './exports';
+import { DashboardLayout, Dashboard, ProviderPage, ProductPage, CategoryPage, Login, SignUp, OrderPage } from './exports';
 
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
           <Route path="providers" element={<ProviderPage />} />
           <Route path="categories" element={<CategoryPage />} />
           <Route path="products" element={<ProductPage />} />
+          <Route path='orders' element={<OrderPage/>}></Route>
         </Route>
         <Route path='login' element={<Login/>}></Route>
         <Route path='signup' element={<SignUp/>}></Route>

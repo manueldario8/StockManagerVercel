@@ -30,7 +30,7 @@ const Dashboard = () => {
     <>
     
     <div className="dashboard">
-      <h3>Dashboard</h3>
+      <h3 className='title-dash'>Dashboard</h3>
       <div className="cards-container">
         <MainCard data={mainCards[0]}></MainCard>
         <MainCard data={mainCards[1]}></MainCard>

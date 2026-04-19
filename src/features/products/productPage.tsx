@@ -30,7 +30,7 @@ const products: Product[] = [
 const ProductPage = () => {
   return (
     <>
-      <h3>Productos</h3>
+      <h3 className='title-dash'>Productos</h3>
       <Table data={products} columns={productColumns} />
     </>
   );
