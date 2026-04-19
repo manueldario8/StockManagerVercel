@@ -11,13 +11,17 @@ export { default as Logo} from '../src/assets/stockmanagerlogo.png'
 /*UI exports*/
 export { default as MainCard} from './UI/mainCard/maincard';
 export { default as Table } from './UI/tables/table';
+export { default as Modal } from './UI/crudModal/modal'
 
 /*Features exports*/
 export { default as ProviderPage } from './features/providers/providerPage';
 export { default as ProviderDetail } from './features/providers/providerDetail';
 export { default as ProviderForm } from './features/providers/providerForm';
-export { default as ProductPage } from './features/products/productPage';
+
 export { default as CategoryPage } from './features/categories/categoryPage';
+
+export { default as ProductPage } from './features/products/productPage';
+
 export { default as OrderPage } from './features/orders/orderPage';
 export { default as Login } from './features/login/login';
 export { default as SignUp } from './features/login/registeruser';

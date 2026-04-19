@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { Table, type Column } from "../../exports";
 import { useProviders } from "../../hooks/useProvider";
 import type { OnlyProvider } from "../../api/providers";
+import { ProviderForm, Modal }from "../../exports";
 
 const ProviderPage = () => {
   const navigate = useNavigate();
   const { providers, loading, error, toggleStatus } = useProviders();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Las columnas van DENTRO del componente para tener acceso a navigate y toggleStatus
+  
   const providerColumns: Column<OnlyProvider>[] = [
     { key: "code", header: "Código" },
     { key: "name", header: "Nombre" },
@@ -28,7 +31,7 @@ const ProviderPage = () => {
           <button title="Ver detalle" onClick={() => navigate(`/providers/${provider.id}`)}>
             👁
           </button>
-          <button title="Editar" onClick={() => navigate(`/providers/${provider.id}/edit`)}>
+          <button title="Editar" onClick={() => navigate(`/providers/${provider.id}`)}>
             ✏️
           </button>
           <button
@@ -49,9 +52,19 @@ const ProviderPage = () => {
     <>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h3 className="title-dash">Proveedores</h3>
-        <button onClick={() => navigate("/providers/new")}>+ Agregar</button>
+        <button onClick={() => setIsModalOpen(true)}>+ Agregar</button>
       </div>
       <Table data={providers} columns={providerColumns} />
+
+
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Nuevo proveedor"
+      >
+        <ProviderForm onSuccess={() => setIsModalOpen(false)} />
+      </Modal>
     </>
   );
 };

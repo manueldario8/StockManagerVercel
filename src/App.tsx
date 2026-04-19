@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { DashboardLayout, Dashboard, ProviderPage, ProductPage, CategoryPage, Login, SignUp, OrderPage } from './exports';
+import { DashboardLayout, Dashboard, ProviderPage, ProductPage, CategoryPage, Login, SignUp, OrderPage, ProviderDetail } from './exports';
 
 
 function App() {
@@ -9,8 +9,13 @@ function App() {
       <Routes>
         <Route path='/' element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
+          
           <Route path="providers" element={<ProviderPage />} />
+          <Route path="providers/:id" element={<ProviderDetail />} />
+          
           <Route path="categories" element={<CategoryPage />} />
+
+
           <Route path="products" element={<ProductPage />} />
           <Route path='orders' element={<OrderPage/>}></Route>
         </Route>

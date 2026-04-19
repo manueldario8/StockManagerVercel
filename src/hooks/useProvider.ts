@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { providersApi, type OnlyProvider } from "../api/providers";
+import { providersApi, type OnlyProvider } from "../api/providers.ts";
 
 export const useProviders = () => {
   const [providers, setProviders] = useState<OnlyProvider[]>([]);

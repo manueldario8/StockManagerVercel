@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { providersApi, type CreateProvider } from "../../api/providers";
+import { providersApi, type CreateProvider } from "../../api/providers.ts";
 
-const ProviderFormPage = () => {
+interface ProviderFormProps {
+  onSuccess: () => void;
+}
+
+
+const ProviderForm = ({ onSuccess }: ProviderFormProps) => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const token = localStorage.getItem("token") ?? "";
@@ -19,6 +24,7 @@ const ProviderFormPage = () => {
       try {
         const data = await providersApi.getById(Number(id), token);
         setForm({ name: data.name, code: data.code });
+        onSuccess();
       } catch {
         toast.error("No se pudo cargar el proveedor");
         navigate("/providers");
@@ -109,4 +115,4 @@ const ProviderFormPage = () => {
   );
 };
 
-export default ProviderFormPage;
+export default ProviderForm;
