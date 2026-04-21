@@ -19,9 +19,11 @@ export { default as ProviderDetail } from './features/providers/providerDetail';
 export { default as ProviderForm } from './features/providers/providerForm';
 
 export { default as CategoryPage } from './features/categories/categoryPage';
-
+export { default as CategoryDetail}  from './features/categories/categoryDetail';
+export { default as CategoryForm } from './features/categories/CategoryForm';
+ 
 export { default as ProductPage } from './features/products/productPage';
 
 export { default as OrderPage } from './features/orders/orderPage';
 export { default as Login } from './features/login/login';
-export { default as SignUp } from './features/login/registeruser';
+export { default as SignUp } from './features/login/signup';

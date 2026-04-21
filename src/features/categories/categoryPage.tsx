@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { Table, type Column } from "../../exports";
+import { useState } from "react";
+import { Table, type Column, Modal } from "../../exports";
 import { useCategories } from "../../hooks/useCategory";
 import type { OnlyCategory } from "../../api/categories";
+import CategoryForm from "./CategoryForm";
 
 const CategoryPage = () => {
   const navigate = useNavigate();
   const { categories, loading, error, toggleStatus } = useCategories();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const categoryColumns: Column<OnlyCategory>[] = [
     { key: "name", header: "Nombre" },
@@ -48,9 +50,18 @@ const CategoryPage = () => {
     <>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h3 className="title-dash">Categorías</h3>
-        <button onClick={() => navigate("/providers/new")}>+ Agregar</button>
+        <button onClick={() => setIsModalOpen(true)}>+ Agregar</button>
       </div>
       <Table data={categories} columns={categoryColumns} />
+
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Nueva categoría"
+      >
+        <CategoryForm onSuccess={() => setIsModalOpen(false)} />
+      </Modal>
     </>
   );
 };

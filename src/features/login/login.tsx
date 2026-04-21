@@ -2,7 +2,7 @@ import "./login.css";
 import { Logo } from "../../exports";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { authService } from "../../api/authService";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -44,25 +44,7 @@ const Login = () => {
             setLoading(true);
             setError("");
 
-            const response = await fetch("https://localhost:7289/api/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email,
-                    password
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error("Credenciales inválidas");
-            }
-
-            const data = await response.json();
-
-
-            localStorage.setItem("token", data.token);
+            await authService.login({ email, password });
 
             navigate("/");
         } catch (err: any) {

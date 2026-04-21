@@ -7,8 +7,11 @@ export interface OnlyCategory {
     statusActived: boolean;
 }
 
+export interface CreateCategory {
+  name:string;
+}
+
 export interface CategoryName {
-    id:number;
     name: string;
 }
 
@@ -33,7 +36,7 @@ export const categoriesApi = {
   getById: (id: number, token: string) =>
     apiClient<CategoryDetails>(`${API_ROUTES.categories}/${id}`, { token }),
 
-  create: (data: OnlyCategory, token: string) =>
+  create: (data: CreateCategory, token: string) =>
   apiClient<OnlyCategory>(API_ROUTES.categories, {
     method: "POST",
     body: JSON.stringify(data),
