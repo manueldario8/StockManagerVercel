@@ -12,5 +12,5 @@ export interface AuthResponseDTO {
 export interface AuthState {
   token: string;
   role: string;
-  expires: string;
+  expiresAt: string;
 }

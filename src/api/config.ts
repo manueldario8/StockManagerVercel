@@ -6,6 +6,6 @@ export const API_ROUTES = {
   products: "/api/product",
   orders: "/api/order",
   auth: "/api/auth",
-  users: "/api/users", 
+  users: "/api/user", 
   
 } as const;

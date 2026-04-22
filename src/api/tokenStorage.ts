@@ -24,6 +24,6 @@ export const tokenStorage = {
   isExpired(): boolean {
     const state = this.get();
     if (!state) return true;
-    return new Date(state.expires) <= new Date();
+    return new Date(state.expiresAt) <= new Date();
   },
 };
