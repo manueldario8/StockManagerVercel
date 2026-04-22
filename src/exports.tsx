@@ -20,7 +20,7 @@ export { default as ProviderForm } from './features/providers/providerForm';
 
 export { default as CategoryPage } from './features/categories/categoryPage';
 export { default as CategoryDetail}  from './features/categories/categoryDetail';
-export { default as CategoryForm } from './features/categories/CategoryForm';
+export { default as CategoryForm } from './features/categories/categoryForm';
  
 export { default as ProductPage } from './features/products/productPage';
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Table, type Column, Modal } from "../../exports";
 import { useCategories } from "../../hooks/useCategory";
 import type { OnlyCategory } from "../../api/categories";
-import CategoryForm from "./CategoryForm";
+import CategoryForm from "./categoryForm";
 
 const CategoryPage = () => {
   const navigate = useNavigate();
