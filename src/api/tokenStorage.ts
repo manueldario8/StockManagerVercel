@@ -2,7 +2,7 @@ const KEY = "auth";
 
 export interface AuthStorage {
   token: string;
-  expiresAt: string; 
+  expiresAt: string;
   role: string;
 }
 

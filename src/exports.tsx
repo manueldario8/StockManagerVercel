@@ -8,9 +8,9 @@ export type {Column} from './UI/tables/table';
 export { default as Logo} from '../src/assets/stockmanagerlogo.png'
 
 /*Auth exports*/
-export { default as ProtectedRoute } from './context/protectedRoute';
-export { AuthProvider } from './context/authContext';
-export { default as PublicRoute } from './context/publicRoute';
+export { default as ProtectedRoute } from './context/protectedRoute.tsx';
+export { AuthProvider } from './context/authContext.tsx';
+export { default as PublicRoute } from './context/publicRoute.tsx';
 
 /*UI exports*/
 export { default as MainCard} from './UI/mainCard/maincard';

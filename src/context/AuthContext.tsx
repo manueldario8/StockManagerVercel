@@ -13,10 +13,9 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [role, setRole] = useState<string | null>(null);
-  
+
   useEffect(() => {
     const auth = tokenStorage.get();
 
@@ -31,14 +30,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (tokenStorage.isExpired()) {
-        logout();
-      }
-    }, 5000);
+    const handleLogout = () => {
+      tokenStorage.clear();
+      setIsAuthenticated(false);
+      setRole(null);
+      navigate("/login");
+    };
 
-    return () => clearInterval(interval);
-  }, []);
+    window.addEventListener("auth:logout", handleLogout);
+
+    return () => {
+      window.removeEventListener("auth:logout", handleLogout);
+    };
+  }, [navigate]);
 
   const login = (data: { role: string }) => {
     setIsAuthenticated(true);

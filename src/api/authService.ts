@@ -15,7 +15,7 @@ export const authService = {
 
     tokenStorage.save({
       token: response.token,
-      expiresAt: response.expiresAt, 
+      expiresAt: response.expiresAt,
       role: response.role,
     });
 
