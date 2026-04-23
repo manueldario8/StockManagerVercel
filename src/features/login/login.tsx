@@ -1,11 +1,11 @@
 import "./login.css";
 import { Logo } from "../../exports";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { authService } from "../../api/authService";
+import { useAuth } from "../../context/authContext";
 
 const Login = () => {
-    const navigate = useNavigate();
 
     const [step, setStep] = useState<1 | 2>(1);
     const [email, setEmail] = useState("");
@@ -17,7 +17,11 @@ const Login = () => {
 
     const isValidEmail = (value: string) => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+        
     };
+
+    const { login } = useAuth();
 
     const handleEmailSubmit = (e: any) => {
         e.preventDefault();
@@ -31,28 +35,27 @@ const Login = () => {
     };
 
 
-    const handlePasswordSubmit = async (
-        e: any) => {
-        e.preventDefault();
+    const handlePasswordSubmit = async (e: any) => {
+  e.preventDefault();
 
-        if (!password.trim()) {
-            setError("La contraseña es obligatoria");
-            return;
-        }
+  if (!password.trim()) {
+    setError("La contraseña es obligatoria");
+    return;
+  }
 
-        try {
-            setLoading(true);
-            setError("");
+  try {
+    setLoading(true);
+    setError("");
 
-            await authService.login({ email, password });
+    const res = await authService.login({ email, password });
+    login({ role: res.role });
 
-            navigate("/");
-        } catch (err: any) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+  } catch (err: any) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
     return (
         <div className="sub-main">

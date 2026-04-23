@@ -5,6 +5,7 @@ import { tokenStorage } from "../api/tokenStorage";
 interface AuthContextType {
   isAuthenticated: boolean;
   role: string | null;
+  login: (data: { role: string }) => void;
   logout: () => void;
 }
 
@@ -12,26 +13,38 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    () => !tokenStorage.isExpired()
-  );
-  const [role, setRole] = useState(() => tokenStorage.get()?.role ?? null);
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [role, setRole] = useState<string | null>(null);
+  
   useEffect(() => {
-    const handleExpired = () => {
+    const auth = tokenStorage.get();
+
+    if (auth && !tokenStorage.isExpired()) {
+      setIsAuthenticated(true);
+      setRole(auth.role);
+    } else {
+      tokenStorage.clear();
       setIsAuthenticated(false);
       setRole(null);
-      navigate("/login");
-    };
+    }
+  }, []);
 
-    window.addEventListener("auth:expired", handleExpired);
-    window.addEventListener("auth:logout", handleExpired);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (tokenStorage.isExpired()) {
+        logout();
+      }
+    }, 5000);
 
-    return () => {
-      window.removeEventListener("auth:expired", handleExpired);
-      window.removeEventListener("auth:logout", handleExpired);
-    };
-  }, [navigate]);
+    return () => clearInterval(interval);
+  }, []);
+
+  const login = (data: { role: string }) => {
+    setIsAuthenticated(true);
+    setRole(data.role);
+    navigate("/");
+  };
 
   const logout = () => {
     tokenStorage.clear();
@@ -41,7 +54,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, role, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, role, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

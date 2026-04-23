@@ -1,8 +1,9 @@
 import './sidebar.css';
 import { Link } from 'react-router-dom';
-
+import { useAuth } from '../../context/authContext';
 
 const Sidebar = () => {
+    const { logout } = useAuth();
 return (
 <>
     <div className="main-sd-container"> 
@@ -17,7 +18,7 @@ return (
             <Link to="/providers"><i className="fa-solid fa-hand-holding-hand"></i>Proveedores</Link>
             <Link to="/settings"><i className="fa-solid fa-gear"></i>Configuración</Link>
             <Link to="/account"><i className="fa-solid fa-circle-user"></i>Cuenta</Link>
-            <Link to="/login"><i className="fa-solid fa-right-from-bracket"></i>Salir</Link>
+            <Link to="/login" onClick={logout}><i className="fa-solid fa-right-from-bracket"></i> Salir</Link>
         </div>
     </div>
 </>

@@ -7,6 +7,10 @@ export { default as Dashboard } from './components/dashboard/dashboard';
 export type {Column} from './UI/tables/table';
 export { default as Logo} from '../src/assets/stockmanagerlogo.png'
 
+/*Auth exports*/
+export { default as ProtectedRoute } from './context/protectedRoute';
+export { AuthProvider } from './context/authContext';
+export { default as PublicRoute } from './context/publicRoute';
 
 /*UI exports*/
 export { default as MainCard} from './UI/mainCard/maincard';

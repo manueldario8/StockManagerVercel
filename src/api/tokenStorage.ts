@@ -1,17 +1,22 @@
-import type { AuthState } from "./auth.types";
-
 const KEY = "auth";
 
+export interface AuthStorage {
+  token: string;
+  expiresAt: string; 
+  role: string;
+}
+
 export const tokenStorage = {
-  save(state: AuthState) {
-    localStorage.setItem(KEY, JSON.stringify(state));
+  save(data: AuthStorage) {
+    localStorage.setItem(KEY, JSON.stringify(data));
   },
 
-  get(): AuthState | null {
+  get(): AuthStorage | null {
     const raw = localStorage.getItem(KEY);
     if (!raw) return null;
+
     try {
-      return JSON.parse(raw) as AuthState;
+      return JSON.parse(raw) as AuthStorage;
     } catch {
       return null;
     }
@@ -22,8 +27,9 @@ export const tokenStorage = {
   },
 
   isExpired(): boolean {
-    const state = this.get();
-    if (!state) return true;
-    return new Date(state.expiresAt) <= new Date();
+    const auth = this.get();
+    if (!auth?.expiresAt) return true;
+
+    return new Date(auth.expiresAt).getTime() <= Date.now();
   },
 };

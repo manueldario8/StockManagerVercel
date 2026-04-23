@@ -15,7 +15,7 @@ export const authService = {
 
     tokenStorage.save({
       token: response.token,
-      expiresAt: response.expires,
+      expiresAt: response.expiresAt, 
       role: response.role,
     });
 
@@ -24,19 +24,9 @@ export const authService = {
 
   logout() {
     tokenStorage.clear();
-    
-    window.dispatchEvent(new Event("auth:logout"));
   },
 
   getToken(): string | null {
     return tokenStorage.get()?.token ?? null;
-  },
-
-  getRole(): string | null {
-    return tokenStorage.get()?.role ?? null;
-  },
-
-  isAuthenticated(): boolean {
-    return !tokenStorage.isExpired();
   },
 };

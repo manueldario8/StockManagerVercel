@@ -5,7 +5,7 @@ export interface LoginDTO {
 
 export interface AuthResponseDTO {
   token: string;
-  expires: string; 
+  expiresAt: string; 
   role: string;
 }
 
