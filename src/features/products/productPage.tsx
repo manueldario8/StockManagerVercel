@@ -1,37 +1,66 @@
-import { Table, type Column } from '../../exports';
-
-type Product = {
-  providerCode: string;
-  productCode: string;
-  name: string;
-  price: number;
-  category: string;
-};
-
-const productColumns: Column<Product>[] = [
-  {
-    key: "providerCode",
-    header: "Código",
-    render: (_, row) => `${row.providerCode}/${row.productCode}`
-  },
-  { key: "name", header: "Name" },
-  { key: "price", header: "Price" },
-  { key: "category", header: "Category" }
-];
-
-const products: Product[] = [
-  { providerCode: "01", productCode: "4091", name: "AMD Ryzen 5300g", price: 180.000, category: "Electrónica"},
-  { providerCode: "02", productCode: "1022", name: "Luces x3", price: 10.300, category: "Home & Deco"},
-  { providerCode: "01", productCode: "4081", name: "NVIDEA RTX7030", price: 150.200, category: "Electrónica"},
-  { providerCode: "03", productCode: "2024", name: "Jeans XXL", price: 8020, category: "Ropa de hombres"}
-];
-
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Table, type Column, Modal } from "../../exports";
+import { useProducts } from "../../hooks/useProduct";
+import type { OnlyProduct } from "../../api/endopoints/products";
+import ProductForm from "./productForm";
 
 const ProductPage = () => {
+  const navigate = useNavigate();
+  const { products, loading, error } = useProducts(); // 👈 no hay toggleStatus
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const productColumns: Column<OnlyProduct>[] = [
+    {
+      key: "providerCode",
+      header: "Código",
+      render: (_value, product) => (
+        <span>{product.providerCode}/{product.productCode}</span>
+      ),
+    },
+    { key: "name", header: "Nombre" },
+    { key: "price", header: "Precio" },
+    {
+      key: "id",
+      header: "Acciones",
+      render: (_value, product) => (
+        <div style={{ display: "flex", gap: "8px" }}>
+          <button
+            title="Ver detalle"
+            onClick={() => navigate(`/products/${product.id}`)}
+          >
+            👁
+          </button>
+          <button
+            title="Editar"
+            onClick={() => navigate(`/products/${product.id}`)}
+          >
+            ✏️
+          </button>
+        </div>
+      ),
+    },
+  ];
+
+  if (loading) return <p>Cargando productos...</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
+
   return (
     <>
-      <h3 className='title-dash'>Productos</h3>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <h3 className="title-dash">Productos</h3>
+        <button onClick={() => setIsModalOpen(true)}>+ Agregar</button>
+      </div>
+
       <Table data={products} columns={productColumns} />
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Nuevo producto"
+      >
+        <ProductForm onSuccess={() => setIsModalOpen(false)} />
+      </Modal>
     </>
   );
 };

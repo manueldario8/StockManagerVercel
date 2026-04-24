@@ -1,5 +1,6 @@
-import { apiClient } from "./client";
-import { API_ROUTES } from "./config";
+import { apiClient } from "../auth/client";
+import { API_ROUTES } from "../auth/config";
+import { type ProductToCategory } from "./products";
 
 export interface OnlyCategory {
     id:number;
@@ -12,14 +13,12 @@ export interface CreateCategory {
 }
 
 export interface CategoryName {
+    id: number;
     name: string;
 }
 
-export interface ProductToCategory {
-    providerCode: string;
-    productCode: string;
-    name: string;
-    price: number;
+export interface UpdateCategory {
+  name: string;
 }
 
 export interface CategoryDetails {
@@ -43,7 +42,7 @@ export const categoriesApi = {
     token,
   }),
 
-  update: (id: number, data: CategoryName, token: string) =>
+  update: (id: number, data: UpdateCategory, token: string) =>
     apiClient<OnlyCategory>(`${API_ROUTES.categories}/${id}`, {
       method: "PUT",
       body: JSON.stringify(data),

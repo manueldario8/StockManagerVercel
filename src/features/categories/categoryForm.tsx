@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { categoriesApi, type CreateCategory } from "../../api/categories.ts";
+import { categoriesApi, type CreateCategory } from "../../api/endopoints/categories";
 
 interface CategoryFormProps {
   onSuccess: () => void;
@@ -14,7 +14,7 @@ const CategoryForm = ({ onSuccess }: CategoryFormProps) => {
   const token = localStorage.getItem("token") ?? "";
   const isEditing = Boolean(id);
 
-  const [form, setForm] = useState<CreateCategory>({ name: "" });
+  const [form, setForm] = useState<CreateCategory>({name: "" });
   const [loading, setLoading]     = useState(false);
   const [loadingData, setLoadingData] = useState(isEditing);
 
@@ -51,7 +51,7 @@ const CategoryForm = ({ onSuccess }: CategoryFormProps) => {
     try {
       setLoading(true);
       if (isEditing) {
-        await categoriesApi.update(Number(id), { name: form.name }, token);
+        await categoriesApi.update(Number(id), {name: form.name }, token);
         toast.success("Categoría actualizada");
       } else {
         await categoriesApi.create(form, token);

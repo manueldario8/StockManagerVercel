@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { providersApi, type CreateProvider } from "../../api/providers.ts";
+import { providersApi, type CreateProvider } from "../../api/endopoints/providers";
 
 interface ProviderFormProps {
   onSuccess: () => void;

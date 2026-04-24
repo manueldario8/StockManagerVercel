@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Table, type Column, Modal } from "../../exports";
 import { useCategories } from "../../hooks/useCategory";
-import type { OnlyCategory } from "../../api/categories";
+import type { OnlyCategory } from "../../api/endopoints/categories";
 import CategoryForm from "./categoryForm";
 
 const CategoryPage = () => {

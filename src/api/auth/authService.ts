@@ -1,11 +1,11 @@
 import { apiClient } from "./client";
 import { tokenStorage } from "./tokenStorage";
 import { API_ROUTES } from "./config";
-import type { AuthResponseDTO, LoginDTO } from "./auth.types";
+import type { AuthResponse, Login } from "./auth.types";
 
 export const authService = {
-  async login(dto: LoginDTO): Promise<AuthResponseDTO> {
-    const response = await apiClient<AuthResponseDTO>(
+  async login(dto: Login): Promise<AuthResponse> {
+    const response = await apiClient<AuthResponse>(
       `${API_ROUTES.auth}/login`,
       {
         method: "POST",

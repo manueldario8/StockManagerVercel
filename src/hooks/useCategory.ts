@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { categoriesApi, type OnlyCategory } from "../api/categories";
+import { categoriesApi, type OnlyCategory } from "../api/endopoints/categories";
 
 export const useCategories = () => {
   const [categories, setCategories] = useState<OnlyCategory[]>([]);

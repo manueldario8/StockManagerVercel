@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Table, type Column } from "../../exports";
 import { useProviders } from "../../hooks/useProvider";
-import type { OnlyProvider } from "../../api/providers";
+import type { OnlyProvider } from "../../api/endopoints/providers";
 import { ProviderForm, Modal }from "../../exports";
 
 const ProviderPage = () => {

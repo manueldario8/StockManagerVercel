@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { providersApi, type ProviderWithProduct } from "../../api/providers";
+import { providersApi, type ProviderWithProduct } from "../../api/endopoints/providers";
 
 const ProviderDetailPage = () => {
   const { id } = useParams<{ id: string }>();

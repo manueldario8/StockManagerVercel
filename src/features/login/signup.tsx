@@ -2,8 +2,8 @@ import './login.css';
 import { Logo } from '../../exports';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { apiClient } from '../../api/client';
-import { API_ROUTES, API_BASE_URL } from '../../api/config';
+import { apiClient } from '../../api/auth/client';
+import { API_ROUTES, API_BASE_URL } from '../../api/auth/config';
 
 
 const SignUp = () => {

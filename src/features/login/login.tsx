@@ -2,7 +2,7 @@ import "./login.css";
 import { Logo } from "../../exports";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { authService } from "../../api/authService";
+import { authService } from "../../api/auth/authService.ts";
 import { useAuth } from "../../context/authContext.tsx";
 
 const Login = () => {
